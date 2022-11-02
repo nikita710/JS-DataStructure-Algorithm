@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array Traversing</title>
+  </head>
+  <body>
+    <div>
+      <p>Enter Number between 0-9</p>
+      <input id="input-ele" type="text" />
+      <button onclick="getElement()">Click</button>
+      <p id="show-ele"></p>
+    </div>
+
+    <script>
+      const arr = [25, 8, 9, 36, 1, 0, 4, 22, 31, 74];
+      const showEle = document.getElementById("show-ele");
+      for (let i = 0; i < arr.length; i++) {
+        showEle.innerHTML += `${[i]} = ${arr[i]} <br>`;
+      }
+      function getElement() {
+        let ele = document.getElementById("input-ele").value;
+        if (ele <= arr.length && ele >= 0 && typeof parseInt(ele)) {
+          alert(arr[ele]);
+        } else {
+          alert("Please enter valid number!");
+        }
+      }
+    </script>
+  </body>
+</html>
