@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insert element in array</title>
+  </head>
+  <body>
+    <div>
+      <p>Enter numeric value between 0 to Array Length</p>
+      <input
+        id="input-position"
+        type="number"
+        placeholder="Enter array position"
+      />
+      <input id="input-new-ele" type="number" placeholder="Enter new element" />
+      <button onclick="insertElement()">Click</button>
+      <p id="show-original-array"></p>
+      <p id="show-new-array"></p>
+    </div>
+
+    <script>
+      const arr = [25, 14, 11, 36, 46, 53, 62];
+      const showOriginalArray = document.getElementById("show-original-array");
+      showOriginalArray.innerHTML = `[${arr}]`;
+
+      console.log(arr);
+
+      function insertElement() {
+        const showNewArray = document.getElementById("show-new-array");
+        const newEle = document.getElementById("input-new-ele").value;
+        const position = document.getElementById("input-position").value;
+
+        if (
+          position <= arr.length &&
+          position >= 0 &&
+          position !== "" &&
+          newEle !== ""
+        ) {
+          for (let i = arr.length - 1; i >= 0; i--) {
+            if (i >= position) {
+              arr[i + 1] = arr[i];
+              if (i == position) {
+                arr[i] = parseInt(newEle);
+              }
+            }
+          }
+          console.log(arr);
+          showNewArray.innerHTML = `[${arr}]`;
+
+          document.getElementById("input-new-ele").value = "";
+          document.getElementById("input-position").value = "";
+        } else {
+          alert("please enter valid input!");
+        }
+      }
+    </script>
+  </body>
+</html>
