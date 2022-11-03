@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tow Array Merge Technique 1</title>
+  </head>
+  <body>
+    <div>
+      <h3>Tow array merged</h3>
+      <p id="array-one"></p>
+      <p id="array-two"></p>
+      <p id="array-three"></p>
+    </div>
+
+    <script>
+      const arr1 = [25, 8, 9, 36, 1, 0];
+      const arr2 = [3, 7, 24, 15, 18, 12];
+      const arr3 = [];
+
+      const showArr1 = document.getElementById("array-one");
+      showArr1.innerHTML = `Array First = [${arr1}]`;
+      const showArr2 = document.getElementById("array-two");
+      showArr2.innerHTML = `Array Second = [${arr2}]`;
+
+      for (let i = 0; i < arr1.length; i++) {
+        arr3[i] = arr1[i];
+      }
+
+      for (let i = 0; i < arr2.length; i++) {
+        // console.log([arr1.length + i]);
+        arr3[arr1.length + i] = arr2[i];
+      }
+
+      console.log(arr3);
+      const showArr3 = document.getElementById("array-three");
+      showArr3.innerHTML = `Merged Array = [${arr3}]`;
+    </script>
+  </body>
+</html>
