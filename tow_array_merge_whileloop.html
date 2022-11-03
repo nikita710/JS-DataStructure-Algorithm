@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tow Array Merge using while loop</title>
+  </head>
+  <body>
+    <div>
+      <h3>Tow array merged</h3>
+      <p id="array-one"></p>
+      <p id="array-two"></p>
+      <p id="array-three"></p>
+    </div>
+
+    <script>
+      const arr1 = [4, 8, 9, 11, 15, 21, 25, 28];
+      const arr2 = [3, 7, 10, 13, 14, 22];
+      const arr3 = [];
+
+      const showArr1 = document.getElementById("array-one");
+      showArr1.innerHTML = `Array First = [${arr1}]`;
+      const showArr2 = document.getElementById("array-two");
+      showArr2.innerHTML = `Array Second = [${arr2}]`;
+
+      let i1 = 0;
+      let i2 = 0;
+      let i3 = 0;
+
+      while (i1 < arr1.length && i2 < arr2.length) {
+        if (arr1[i1] < arr2[i2]) {
+          arr3[i3] = arr1[i1];
+          i1++;
+        } else {
+          arr3[i3] = arr2[i2];
+          i2++;
+        }
+        i3++;
+      }
+      while (i1 < arr1.length) {
+        arr3[i3] = arr1[i1];
+        i1++;
+        i3++;
+      }
+      while (i2 < arr2.length) {
+        arr3[i3] = arr2[i2];
+        i2++;
+        i3++;
+      }
+
+      console.log(arr3);
+      const showArr3 = document.getElementById("array-three");
+      showArr3.innerHTML = `Merged Array = [${arr3}]`;
+    </script>
+  </body>
+</html>
