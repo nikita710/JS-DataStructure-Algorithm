@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array Search Element</title>
+  </head>
+  <body>
+    <div>
+      <h3>Array Search Element</h3>
+      <p>Enter element to search</p>
+      <input id="input-ele" type="number" />
+      <button onclick="searchElement()">Click</button>
+      <p id="show-ele"></p>
+    </div>
+
+    <script>
+      const arr = [25, 8, 9, 36, 1, 0, 4, 22, 31, 74];
+      const showEle = document.getElementById("show-ele");
+      showEle.innerHTML = `[${arr}]`;
+
+      function searchElement() {
+        let searchEle = document.getElementById("input-ele").value;
+        searchEle = parseInt(searchEle);
+        let searchIndex = undefined;
+
+        if (searchEle !== " " && searchEle >= 0) {
+          for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === searchEle) {
+              searchIndex = i;
+              break;
+            }
+          }
+          alert(" at position " + searchIndex);
+          console.log(searchIndex);
+        } else {
+          alert("not in array");
+        }
+
+        document.getElementById("input-ele").value = "";
+      }
+     
+    </script>
+  </body>
+</html>
