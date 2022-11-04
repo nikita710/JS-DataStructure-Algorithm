@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Factorial using Recursion</title>
+  </head>
+  <body>
+    <div>
+      <h3>Factorial using Recursion</h3>
+      <p id="fact-num"></p>
+      <p id="factorial"></p>
+    </div>
+
+    <script>
+      function factorial(item) {
+        if (item == 0) {
+          return 1;
+        }
+        return item * factorial(item - 1);
+      }
+      const fact = 5;
+      //  factorial(fact);
+      console.log(factorial(fact));
+
+      const showNum = document.getElementById("fact-num");
+      showNum.innerHTML = `Find factorial of = ${fact}`;
+
+      const showResult = document.getElementById("factorial");
+      showResult.innerHTML = `Factorial is = ${factorial(fact)}`;
+    </script>
+  </body>
+</html>
