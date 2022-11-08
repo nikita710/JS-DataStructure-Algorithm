@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array Delete Element</title>
+  </head>
+  <body>
+    <div>
+      <h3>Array Delete Operation</h3>
+      <p>Enter numeric value between 0 to Array Length</p>
+      <input id="input-position" type="number" placeholder="enter position" />
+      <button onclick="getDelete()">Click</button>
+      <p id="show-original-array"></p>
+      <p id="show-new-array"></p>
+    </div>
+
+    <script>
+      const arr = [25, 41, 10, 3, 7, 8];
+
+      const showOriginalArray = document.getElementById("show-original-array");
+      showOriginalArray.innerHTML = `[${arr}]`;
+
+      console.log(arr);
+
+      function getDelete() {
+        const position = document.getElementById("input-position").value;
+        const showNewArray = document.getElementById("show-new-array");
+        if (position <= arr.length && position >= 0 && position !== "") {
+          for (let i = parseInt(position); i < arr.length; i++) {
+            arr[i] = arr[i + 1];
+          }
+          arr.length = arr.length - 1;
+          showNewArray.innerHTML += `[${arr}] <br> <br>`;
+          console.log(arr);
+        } else {
+          alert("please enter valid input!");
+        }
+
+        document.getElementById("input-position").value = "";
+      }
+    </script>
+  </body>
+</html>
