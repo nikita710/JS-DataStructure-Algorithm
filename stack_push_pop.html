@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stack push and pop</title>
+  </head>
+  <body>
+    <script>
+      let arr = [];
+      let currentSize = arr.length;
+      let max = 4;
+
+      function push(item) {
+        if (currentSize >= max) {
+          alert("Stack is full, you can not add " + item);
+        }
+        arr[currentSize] = item;
+        currentSize += 1;
+      }
+
+      function pop() {
+        if (arr.length > 0) {
+          currentSize -= 1;
+          arr.length = currentSize;
+        } else {
+          alert("Stack is empty");
+        }
+      }
+
+      push(20);
+      push(50);
+      push(40);
+      push(10);
+      push(80);
+      push(90);
+   
+      pop();
+      pop();
+      console.log(arr);
+    </script>
+  </body>
+</html>
