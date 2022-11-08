@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recursion with array reverse</title>
+  </head>
+  <body>
+    <h3>Recursion with array reverse</h3>
+
+    <p id="original-array"></p>
+    <p id="reverse-array"></p>
+
+    <script>
+      const original_array = document.getElementById("original-array");
+      const reverse_array = document.getElementById("reverse-array");
+
+      data = [5, 89, 40, 23, 65];
+      original_array.innerHTML = `[${data}]`;
+      console.log(original_array.nodeValue);
+      function arrayReverse(data, start, end) {
+        if (start <= end) {
+          console.log(data);
+          let temp = data[start];
+          data[start] = data[end];
+          data[end] = temp;
+          arrayReverse(data, start + 1, end - 1);
+        }
+      }
+      arrayReverse(data, 0, data.length - 1);
+    </script>
+  </body>
+</html>
