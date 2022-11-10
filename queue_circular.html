@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Circular Queue</title>
+  </head>
+  <body>
+    <script>
+      class Queue {
+        constructor(size) {
+          this.maxSize = 5;
+          this.currentSize = 0;
+          this.data = new Array(size);
+          this.front = -1;
+          this.rear = -1;
+        }
+        enqueue(item) {
+          if (this.rear == this.maxSize - 1) {
+            this.rear = 0;
+          } else {
+            this.rear++;
+          }
+
+          this.data[this.rear] = item;
+          this.currentSize++;
+          if (this.front == -1) {
+            this.front = this.rear;
+          }
+        }
+        dequeue() {
+          if (this.currentSize != 0) {
+            this.data[this.front] = null;
+            if (this.front == this.maxSize - 1) {
+              this.front = 0;
+            } else {
+              this.front++;
+            }
+            this.currentSize--;
+          } else {
+            this.front = -1;
+            this.rear = -1;
+            alert("Queue is empty");
+          }
+        }
+      }
+      let queue = new Queue(5);
+      queue.enqueue(10);
+      queue.enqueue(20);
+      queue.enqueue(30);
+      queue.enqueue(40);
+      queue.enqueue(50);
+      //   queue.enqueue(60);
+      //   queue.enqueue(70);
+      console.log(queue);
+      queue.dequeue();
+      queue.dequeue();
+      //   queue.dequeue();
+      console.log(queue);
+      queue.enqueue(60);
+      queue.enqueue(70);
+    </script>
+  </body>
+</html>
