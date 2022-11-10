@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stack with class reverse string</title>
+  </head>
+  <body>
+    <script>
+      class Stack {
+        data = [];
+        currentSize;
+        stackPopEle;
+
+        constructor(str) {
+          console.log(" constructor is called!");
+          this.currentSize = this.data.length;
+        }
+
+        push(item) {
+          this.data[this.currentSize] = item;
+          this.currentSize++;
+        }
+        pop() {
+          this.stackPopEle = this.data[this.currentSize - 1];
+          this.currentSize--;
+          this.data.length = this.currentSize;
+          return this.stackPopEle;
+        }
+        reverseStr(revStr) {
+          console.log(revStr); //['N', 'I', 'K', 'I', 'T', 'A']
+          for (let i = 0; i < revStr.length; i++) {
+            this.push(revStr[i]);
+          }
+          for (let i = 0; i < revStr.length; i++) {
+            revStr[i] = this.pop();
+          }
+          console.log(revStr); //['A', 'T', 'I', 'K', 'I', 'N']
+          console.log(revStr.join("")); // ATIKIN
+        }
+      }
+
+      let str = "NIKITA";
+      str = str.split("");
+      stack1 = new Stack();
+      stack1.reverseStr(str);
+    </script>
+  </body>
+</html>
