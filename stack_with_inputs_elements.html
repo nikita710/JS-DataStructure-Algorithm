@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stack with inputs</title>
+  </head>
+  <body>
+    <h3>Stack with Inputs</h3>
+    <input type="number" id="add-ele" />
+    <button onclick="push()">Add element to Stack</button>
+    <button onclick="pop()">Delete element to Stack</button>
+    <button onclick="display()">Display element from Stack</button>
+
+    <p id="display-ele"></p>
+    <p id="display-ele2"></p>
+    <script>
+      let arr = [];
+      let arrIndex = arr.length;
+
+      function push() {
+        let item = document.getElementById("add-ele").value;
+
+        arr[arrIndex] = parseInt(item);
+        arrIndex += 1;
+        console.log(arr);
+        document.getElementById("display-ele").innerHTML = `[${arr}]`;
+        document.getElementById("add-ele").value = "";
+      }
+      function pop() {
+        //      console.log(arrIndex);
+        if (arrIndex > 0) {
+          arrIndex -= 1;
+          arr.length = arrIndex;
+          document.getElementById("display-ele").innerHTML = `[${arr}]`;
+        } else {
+          alert("Stack is empty");
+        }
+      }
+      function display() {
+        for (let i = 0; i < arr.length; i++) {
+          document.getElementById(
+            "display-ele2"
+          ).innerHTML += `Stack ele no ${i} and value ${arr[i]} <br>`;
+        }
+      }
+    </script>
+  </body>
+</html>
