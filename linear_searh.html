@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linear Search</title>
+  </head>
+  <body>
+    <input type="number" id="input-el" />
+    <button onclick="linearSearch()">Search Element</button>
+    <p id="show-data"></p>
+
+    <script>
+      const data = [20, 25, 10, 14, 48, 13, 67];
+      const showData = document.getElementById("show-data");
+      showData.innerHTML = `[${data}]`;
+
+      function linearSearch() {
+        let searchEle = document.getElementById("input-el").value;
+        let searchIndex = undefined;
+        searchEle = parseInt(searchEle);
+        for (let i = 0; i < data.length; i++) {
+          if (data[i] == searchEle) {
+            searchIndex = i;
+            break;
+          }
+        }
+        console.log(searchIndex);
+        if (!searchIndex) {
+          alert("Element not found");
+        } else {
+          alert("Element position is " + searchIndex);
+        }
+
+        document.getElementById("input-el").value = "";
+      }
+    </script>
+  </body>
+</html>
