@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Queue with all functions</title>
+  </head>
+  <body>
+    <input type="number" id="input-val" />
+    <button onclick="enqueue()">Add Element</button>
+    <button onclick="display()">Display Queue</button>
+    <br /><br />
+    <button onclick="dequeue()">Remove Queue</button>
+    <button onclick="front()">Front Element Queue</button>
+    <button onclick="rear()">Last Element Queue</button>
+    <p id="show-queue"></p>
+    <p id="ele-queue"></p>
+    <script>
+      let queue = [];
+      let currentSize = queue.length;
+      let maxSize = 5;
+      let showQueue = document.getElementById("show-queue");
+      let valQueue = document.getElementById("ele-queue");
+
+      function enqueue() {
+        let newVal = document.getElementById("input-val").value;
+
+        if (currentSize >= maxSize) {
+          alert("Queue is full! max 5 element can add");
+        } else {
+          queue[currentSize] = parseInt(newVal);
+          currentSize++;
+        }
+        console.log(queue);
+        showQueue.innerHTML = `Queue [${queue}]`;
+        document.getElementById("input-val").value = "";
+      }
+      function dequeue() {
+        if (!isEmpty()) {
+          for (let i = 0; i < queue.length; i++) {
+            queue[i] = queue[i + 1];
+          }
+          currentSize--;
+          queue.length = currentSize;
+          showQueue.innerHTML = `Queue [${queue}]`;
+        } else {
+          alert("Queue is empty!");
+        }
+      }
+      function front() {
+        if (!isEmpty()) {
+          valQueue.innerHTML = `Front value [${queue[0]}]`;
+        } else {
+          alert("Queue is empty!");
+        }
+      }
+      function rear() {
+        if (!isEmpty()) {
+          valQueue.innerHTML = `Rear value [${queue[currentSize - 1]}]`;
+        } else {
+          alert("Queue is empty!");
+        }
+      }
+      function display() {
+        showQueue.innerHTML = `Queue [${queue}]`;
+        console.log(queue);
+      }
+      function isEmpty() {
+        if (currentSize <= 0) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    </script>
+  </body>
+</html>
