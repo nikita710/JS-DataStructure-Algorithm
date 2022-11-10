@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stack Reverse String</title>
+  </head>
+  <body>
+    <script>
+      let data = [];
+      let currentSize = data.length;
+
+      function push(item) {
+        data[currentSize] = item;
+        currentSize += 1;
+      }
+
+      function pop() {
+        let popStackEle = data[currentSize - 1];
+        currentSize -= 1;
+        data.length = currentSize;
+        return popStackEle;
+      }
+
+      function reverseStr(item) {
+        for (let i = 0; i < item.length; i++) {
+          push(item[i]);
+        }
+        for (let i = 0; i < item.length; i++) {
+          item[i] = pop();
+        }
+      }
+      let str = "NIKITA";
+      str = str.split(""); //['N', 'I', 'K', 'I', 'T', 'A']
+      reverseStr(str); // now str array works as callby reference
+      console.log(str); // ['A', 'T', 'I', 'K', 'I', 'N']
+      console.log(str.join("")); // ATIKIN
+    </script>
+  </body>
+</html>
