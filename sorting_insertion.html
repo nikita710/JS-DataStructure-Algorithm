@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sorting Insertion</title>
+  </head>
+  <body>
+    <script>
+      //  let data = [23, 18, 89, 87];
+      let data = [12, 53, 62, 5, 78, 23, 11, 58, 2, 4, 1, 0, 3];
+      console.log(data);
+      function insertionSort(items) {
+        let current, i, j;
+        for (i = 1; i < items.length; i++) {
+          current = items[i];
+          j = i - 1;
+          while (j >= 0 && items[j] > current) {
+            items[j + 1] = items[j];
+            j--;
+          }
+          items[j + 1] = current;
+        }
+        console.log(data);
+      }
+      insertionSort(data);
+    </script>
+  </body>
+</html>
