@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palindrome String</title>
+  </head>
+  <body>
+    <script>
+      function checkPalindrome(str) {
+        str = str.toLowerCase();
+        console.log(str);
+        let start = 0;
+        let end = str.length - 1;
+        while (end > start) {
+          if (str[start] != str[end]) {
+            return false;
+          }
+          start++;
+          end--;
+        }
+        return true;
+      }
+      console.log(checkPalindrome("Level"));
+    </script>
+  </body>
+</html>
