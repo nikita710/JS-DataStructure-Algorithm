@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sorting Selection Ascending</title>
+  </head>
+  <body>
+    <script>
+      let data = [12, 53, 62, 5, 78, 23, 11, 58, 2, 4, 1, 0, 3, -5, -10, -78];
+      function selectionSort(items) {
+        let sortEle;
+        for (let i = 0; i < items.length; i++) {
+          sortEle = i;
+          for (let j = i + 1; j < items.length; j++) {
+            if (items[j] < items[sortEle]) {
+              sortEle = j;
+            }
+          }
+          let temp = data[i];
+          data[i] = data[sortEle];
+          data[sortEle] = temp;
+        }
+      }
+      selectionSort(data);
+      console.log(data); //[-78, -10, -5, 0, 1, 2, 3, 4, 5, 11, 12, 23, 53, 58, 62, 78]
+    </script>
+  </body>
+</html>
