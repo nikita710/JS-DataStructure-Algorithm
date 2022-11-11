@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Set data structure</title>
+  </head>
+  <body>
+    <script>
+      let data = new Set(["nikita", "parmar", "nikita"]);
+
+      data.add({"skill": "programming"}); //add data
+      console.log(data);
+      data.delete("skill");
+      console.log(data.has("programming")); // find key
+  
+      console.log(data.size); // find length
+      for (let x of data) {
+        console.log(x);
+      }
+      data.forEach((val) => console.log(val));
+      console.log(data.values())
+      console.log(data.keys())
+      console.log(data.entries())
+      data.clear();
+      console.log(data);
+    </script>
+  </body>
+</html>
