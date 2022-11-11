@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binary Search</title>
+  </head>
+  <body>
+    <script>
+      const data = [10, 15, 16, 18, 23];
+      const find = 16;
+      let position = undefined;
+      let start = 0;
+      let end = data.length - 1;
+
+      while (start <= end) {
+        let mid = Math.floor((start + end) / 2);
+        if (data[mid] == find) {
+          position = mid;
+          console.log("Search element is at position ", position);
+          break;
+        } else if (data[mid] < find) {
+          start = mid + 1;
+        } else {
+          end = mid - 1;
+        }
+      }
+    </script>
+  </body>
+</html>
