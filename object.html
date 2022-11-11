@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object</title>
+  </head>
+  <body>
+    <script>
+      let data = {
+        name: "nikita",
+        age: 30,
+        email: "test@email.com",
+        getName() {
+          return this.name;
+        },
+      };
+      data.contact = 123456789;
+      data.skill = "programming";
+      console.log(data);
+    //  delete data.contact;
+      console.log(Object.keys(data));
+      console.log(Object.values(data));
+      console.log(Object.entries(data));
+    </script>
+  </body>
+</html>
