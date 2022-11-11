@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anagram String</title>
+  </head>
+  <body>
+    <script>
+      let objStr = {};
+      function anagramCheck(str1, str2) {
+        if (str1.length !== str2.length) {
+          return false;
+        }
+        for (ch of str1) {
+          // console.log(ch);
+          objStr[ch] = (objStr[ch] || 0) + 1;
+        }
+        //   console.log(objStr);
+        for (ch of str2) {
+          console.log(ch);
+          if (!objStr[ch]) {
+            return false;
+          } else {
+            objStr[ch]--;
+          }
+          console.log(objStr);
+        }
+        return true;
+      }
+      console.log(anagramCheck("hello", "ehllo"));
+    </script>
+  </body>
+</html>
