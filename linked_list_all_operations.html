@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linked List Data Traversing</title>
+  </head>
+  <body>
+    <script>
+      class List {
+        constructor(node) {
+          this.head = {
+            value: node,
+            next: null,
+          };
+          this.tail = this.head;
+          this.size = 1;
+        }
+        appendNode(addNode) {
+          let newNode = {
+            value: addNode,
+            next: null,
+          };
+          this.tail.next = newNode;
+          this.tail = newNode;
+          this.size++;
+        }
+
+        deleteNode(index) {
+          let counter = 1;
+          let lead = this.head;
+          if (index === 1) {
+            this.head = this.head.next;
+          } else {
+            //find lead node of index
+            while (counter < index - 1) {
+              lead = lead.next;
+              counter++;
+            }
+            // console.log(lead.next);  //remove this node
+            let nextNode = lead.next.next;
+            lead.next = nextNode;
+            //  console.log(lead);
+          }
+          this.size--;
+        }
+
+        insertNode(index, node) {
+          let counter = 1;
+          let currentNode = this.head;
+          while (counter < index - 1) {
+            counter++;
+            currentNode = currentNode.next;
+          }
+          let nextNode = currentNode.next;
+          console.log(currentNode.next);
+          currentNode.next = {
+            value: node,
+            next: nextNode,
+          };
+          this.size++;
+        }
+
+        searchNode(node) {
+          let result = undefined;
+          let lead = this.head;
+          let loop = true;
+          let counter = 1;
+
+          //====Search By value of linked list===//
+
+          //   while (loop) {
+          //     lead = lead.next;
+          //     loop = !!lead;
+          //     // console.log(lead);
+          //     if (lead && lead.value == node) {
+          //       result = lead;
+          //       loop = false;
+          //       console.log(result);
+          //     }
+          //   }
+
+          //====Search By Index of linked list===//
+          while (counter <= this.size && counter < node) {
+            lead = lead.next;
+            counter++;
+          }
+          if (counter > this.size) return console.log("out of range");
+          console.log("Result node is ", lead);
+        }
+
+        traversing() {
+          let currentNode = this.head;
+          let counter = 0;
+          // console.log(currentNode);
+          while (counter < this.size) {
+            // console.log(counter);
+            console.log(currentNode);
+            currentNode = currentNode.next;
+            counter++;
+          }
+        }
+      }
+      let list = new List(100);
+      list.appendNode(200);
+      list.appendNode(300);
+      list.appendNode(400);
+      list.appendNode(500);
+      //   list.insertNode(4, 4500);
+      //   list.traversing();
+      list.searchNode(5);
+      // list.deleteNode(3);
+      // list.traversing();
+      //   console.log(list);
+    </script>
+  </body>
+</html>
