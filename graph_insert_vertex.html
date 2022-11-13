@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Graph Inset Vertex</title>
+  </head>
+  <body>
+    <script>
+      // a=[b,c] ; b=[a,c,d] c:[a,b] d:[b] connected
+      class Graph {
+        constructor() {
+          this.graphList = {};
+        }
+        insertVertex(vertex) {
+          if (!this.graphList[vertex]) {
+            this.graphList[vertex] = [];
+          }
+        }
+        addEdges(v1, v2) {
+          if (!this.graphList[v1]) {
+            this.insertVertex(v1);
+          }
+          if (!this.graphList[v2]) {
+            this.insertVertex(v2);
+          }
+          this.graphList[v1].push(v2);
+          this.graphList[v2].push(v1);
+        }
+      }
+
+      let graph1 = new Graph();
+
+      //== Insert Vertex in Graph
+      //   graph1.insertVertex("A");
+      graph1.insertVertex("B");
+      graph1.insertVertex("C");
+      graph1.insertVertex("D");
+      //   graph1.insertVertex("D");
+      //   graph1.insertVertex("F");
+
+      //== Insert Edges of Vertex in Graph
+      graph1.addEdges("A", "B");
+      graph1.addEdges("A", "C");
+      graph1.addEdges("B", "C");
+      graph1.addEdges("B", "D");
+      
+      console.log(graph1); //A: (2) ['B', 'C'], B: (3) ['A', 'C', 'D'], C: (2) ['A', 'B'], D: ['B']
+    </script>
+  </body>
+</html>
