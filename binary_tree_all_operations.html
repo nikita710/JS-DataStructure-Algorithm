@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binary Search Tree</title>
+  </head>
+  <body>
+    <script>
+      class Node {
+        constructor(val) {
+          this.value = val;
+          this.left = null;
+          this.right = null;
+        }
+      }
+      class BSTree {
+        constructor() {
+          this.root = null;
+        }
+
+        isTreeEmpty() {
+          return this.root === null;
+        }
+
+        makeTree(val) {
+          let newNode = new Node(val);
+          if (this.root == null) {
+            this.root = newNode;
+          } else {
+            this.insertNode(this.root, newNode);
+          }
+        }
+
+        insertNode(root, newNode) {
+          if (root.value > newNode.value) {
+            if (root.left == null) {
+              root.left = newNode;
+            } else {
+              this.insertNode(root.left, newNode);
+            }
+          } else {
+            if (root.right == null) {
+              root.right = newNode;
+            } else {
+              this.insertNode(root.right, newNode);
+            }
+          }
+        }
+
+        searchNode(root, val) {
+          // console.log(root.value);
+          if (root === null) {
+            console.log(val + " not found in tree");
+            return false;
+          } else if (root.value === val) {
+            console.log("Success fully searched", root);
+            return true;
+          } else if (root.value > val) {
+            return this.searchNode(root.left, val);
+          } else {
+            return this.searchNode(root.right, val);
+          }
+        }
+
+        // Depth search traversing
+        preOrder(root) {
+          if (root) {
+            console.log(root);
+            this.preOrder(root.left);
+            this.preOrder(root.right);
+          }
+        }
+        inOrder(root) {
+          if (root) {
+            this.inOrder(root.left);
+            console.log(root.value);
+            this.inOrder(root.right);
+          }
+        }
+        postOrder(root) {
+          if (root) {
+            this.postOrder(root.left);
+            this.postOrder(root.right);
+            console.log(root.value);
+          }
+        }
+
+        // Breath First Search traversing
+        bfsTraversing() {
+          let queue = [];
+          queue.push(this.root);
+          while (queue.length) {
+            let current = queue.shift();
+            if (current.left) {
+              queue.push(current.left);
+            }
+            if (current.right) {
+              queue.push(current.right);
+            }
+            console.log(current.value);
+          }
+        }
+
+        //Min value of tree
+        minValue(root) {
+          if (!root.left) {
+            return root.value;
+          } else {
+            return this.minValue(root.left);
+          }
+        }
+
+        //Max value of tree
+        maxValue(root) {
+          if (!root.right) {
+            return root.value;
+          } else {
+            return this.maxValue(root.right);
+          }
+        }
+
+        removeNode(value) {
+          this.root = this.deleteNode(this.root, value);
+        }
+        deleteNode(root, value) {
+          if (root === null) {
+            return null;
+          } else if (value < root.value) {
+            root.left = this.deleteNode(root.left, value);
+            // console.log(root.left);
+          } else if (value > root.value) {
+            root.right = this.deleteNode(root.right, value);
+            // console.log(root.right)
+          } else {
+            if (!root.left && !root.right) {
+              return null;
+            } else if (!root.left) {
+              return root.right;
+            } else if (!root.right) {
+              return root.left;
+            }
+            root.value = this.minValue(root.right);
+            root.right = this.deleteNode(root.right, value);
+          }
+          // console.log(root);
+          return root;
+        }
+      }
+
+      let bst = new BSTree();
+      bst.makeTree(20);
+      bst.makeTree(10);
+      bst.makeTree(5);
+      bst.makeTree(12);
+      bst.makeTree(30);
+      bst.makeTree(25);
+      bst.makeTree(35);
+
+      //traversing
+      //   bst.preOrder(bst.root);
+      //   bst.inOrder(bst.root);
+      //   bst.postOrder(bst.root);
+
+      // Breath First Search traversing
+      //   bst.bfsTraversing();
+
+      //==Min value
+      // console.log("Min Value :", bst.minValue(bst.root));
+
+      //==Max value
+      // console.log("Max Value :", bst.maxValue(bst.root));
+
+      //   console.log(bst.isTreeEmpty());
+      //   console.log(bst);
+
+      //== Search existence of node
+      //   console.log(bst.searchNode(bst.root, 100));
+      //   console.log(bst.searchNode(bst.root, 30));
+
+      //== Delete node
+      bst.removeNode(10);
+      bst.bfsTraversing();
+    </script>
+  </body>
+</html>
